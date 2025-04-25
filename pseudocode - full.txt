@@ -1,0 +1,238 @@
+Bag Program Pseudocode:
+
+#####
+Class Bag (type T)
+   variable first : Node
+   variable num : integer
+   
+   // Initialize the counter variable
+   set num = 0;
+
+   #####
+   // Add a node to the linked list
+   function add(item : T)
+   	  create Node node
+      node.item = item
+      node.next = first
+      first = node
+      num = num + 1
+   end function
+
+   #####
+   // Remove a node from the linked list
+   function remove(item : T)
+      // Check for empty bag
+      if first is null: return
+      
+      // Check to see if item is the first node
+      if first.item == item
+   	     set first = first.next
+         set num = num - 1
+         return
+      
+
+      create Node current = first.next
+      create Node previous = first
+
+      while current != null
+         if current.item == item
+
+            // Remove the current node
+            set previous.next = current.next
+            
+            // Decrement the list count
+	    set num = num - 1
+
+            // End the loop
+            return
+         
+         // advance to next node
+         set previous = current
+         set current = current.next
+   end function
+   
+   #####
+   // 
+   function contains(item : T) : boolean
+      create Node current = first
+      
+      while current != null
+         if current.item == item
+         	return true
+         
+         // advance node
+         set current = current.next
+        
+      // return false if not found
+      return false
+   end function
+   
+   #####
+   function count(item : T) : int
+      create int c = 0
+      create Node current = first
+      
+      while current != null
+      
+      	// increment the counter
+      	if current.item == item
+      	   set c = c + 1
+      	
+      	// advance node
+      	set current = current.next
+      
+      // return the count of item
+      return c
+   end function
+   
+   ### Additional methods to extend the Bag class
+
+###
+// Return the total number of elements including duplicates (i.e., the number of nodes counted by the 'num' variable)
+function size() : int
+    return num
+end function
+
+###
+// Merge two Bag objects by placing the elements of 'otherBag' into the list after the elements of the current bag
+function merge(otherBag : Bag<T> : void
+    // Iterate using the otherBag's hasNext() and next() methods and use the add() method of the current bag to add each element
+    while otherBag.hasNext()
+        add otherBag.next()
+end function
+	
+	###
+	// Return a new bag that contains only unique elements
+	function distinct() : Bag<T>
+	    // Create a new Bag instance
+	    create Bag<T> newBag
+	    // Create an item of T to store transient Bag items
+	    create T item
+	    
+	    // Iterate current bag and place an item in the new bag if it doesn't already contain that item
+	    while this.hasNext()
+	        // 
+	        set T item = this.next()
+	        // Use the Bag's 'contains()' method to check if item exists in the new bag already, add if not
+	        if not newBag.contains(item)
+	            newBag.add(item)
+	        end if
+	    end while
+	    
+	    // Return the new object
+	    return newBag;
+	end function
+	    
+        
+    
+   
+   #####
+   // Create an inner class for the linked list nodes
+	Class Node (type T)
+	   variable item : T
+	   variable next : Node
+	end class
+   
+   #####
+   // Create an iterator class and function for ease of traversing the linked list
+   Class BagIterator
+      variable current : Node<T> = first  // Nested class allows access to Bag's "first" member
+
+	  // If 'current' is null, then the iteration is complete
+      function hasNext() : boolean
+         return current != null
+      end function
+
+	  // return the current item
+      function next() : T
+         if not hasNext()
+            throw an error
+         set item = current.item
+         set current = current.next
+         return item
+      end function
+   end class
+   
+   #####
+   // Function returns an instance of the iterator class
+   function iterator() : Iterator<T>
+      return new BagIterator
+   end function
+	
+end class
+
+Class BagMain
+   #####
+   function printBag(bag : Bag)
+      for each item in bag
+         print item
+   end function
+   
+   #####
+   function containsTest(myString : String, myBag : Bag)
+      if myBag.contains(myString)
+         print "Bag contains {myString}"
+      else
+   	     print "Bag does not contain {myString}"
+   end function
+   
+   #####
+   function countTest(myString : String, myBag : Bag)
+      print "Bag contains {myBag.count(myString)} occurrences of '{myString}'"
+   end function
+       
+   ##### 
+   function main
+	   // Create instance of the bag class
+	   create Bag myBag : String
+	   
+	   // For convenience, create an array with an assortment of strings to add to the bag
+	   create Array wordList : String = {"this", "is", "a", "test", "a", "is", "this", "is"}
+	   
+	   // Add all words to the bag
+	   for each word in wordList
+	      myBag.add(word)
+	 
+	   // Print the bag contents
+	   printBag(myBag)
+	   
+	   // Test "contains" method
+	   containsTest("test", myBag)
+	   containsTest("a", myBag)
+	   containsTest("not", myBag)
+	   containsTest("and", myBag)
+	   
+	   // Test count method
+	   countTest("this", myBag)
+	   countTest("is", myBag)
+	   
+	   // Remove item
+	   myBag.remove("is")
+	   
+	   // Print the bag
+	   printBag(myBag)
+	   
+	   // Test contains method
+	   containsTest("is", myBag)
+	   
+	   // Test count method
+	   countTest("is", myBag)
+   end function
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+### Additional methods to extend the Bag class
+
+# Modify the `Bag` class from the previous assignment to include the following additional methods:
+# `int size()`: This method should return the total number of elements in the bag, including duplicates.
+# `void merge(Bag<T> otherBag)`: This method should merge the elements of `otherBag` into the current bag.
+# `Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
+
+###
+// Return the total number of elements including duplicates (i.e., the number of nodes counted by the 'num' variable)
+function size() : int
+    return num
+end function
+
+###
+// Merge two Bag objects by placing the elements of 'otherBag' into the list after the elements of the current bag
+function merge(otherBag : Bag<T> : void
+    // Iterate using the otherBag's hasNext() and next() methods and use the add() method of the current bag to add each element
+    while otherBag.hasNext()
+        add otherBag.next()
+end function
+
+###
+// Return a new bag that contains only unique elements
+function distinct() : Bag<T>
+    // Create a new Bag instance
+    create Bag<T> newBag
+    // Create an item of T to store transient Bag items
+    create T item
+    
+    // Iterate current bag and place an item in the new bag if it doesn't already contain that item
+    while this.hasNext()
+        // 
+        set T item = this.next()
+        // Use the Bag's 'contains()' method to check if item exists in the new bag already, add if not
+        if not newBag.contains(item)
+            newBag.add(item)
+        end if
+    end while
+    
+    // Return the new object
+    return newBag;
+end function
+    
+        
+    
