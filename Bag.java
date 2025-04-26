@@ -134,8 +134,8 @@ public class Bag<T> implements Iterable<T> {
 	    // return the new Bag
 	    return newBag;
 	}
-	
-	//-----------------------------------
+	// End of additional methods
+
 	// Nested class for linked list nodes
 	private class Node {
 		T item;
