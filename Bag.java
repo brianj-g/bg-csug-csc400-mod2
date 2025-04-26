@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 */
 public class Bag<T> implements Iterable<T> {
 	
-	Node first;  // First item in the linked list
-	int num;  // Counter variable
+	private Node first;  // First item in the linked list
+	private int num;  // Counter variable
 	
 	// Method: Add a node to the linked list
 	public void add(T item) {
@@ -112,7 +112,7 @@ public class Bag<T> implements Iterable<T> {
 	}
 	
 	// Return a new bag that contains only unique elements
-	Bag<T> distinct() {
+	public Bag<T> distinct() {
 	    // Instantiate a new bag for the unique elements
 	    Bag<T> newBag = new Bag<T>();
 	    // Create an item of T to store transient Bag items
@@ -137,13 +137,13 @@ public class Bag<T> implements Iterable<T> {
 	
 	//-----------------------------------
 	// Nested class for linked list nodes
-	class Node {
+	private class Node {
 		T item;
 		Node next;
 	}
 	
 	// Nested class to implement the iterator.  This makes it simpler to cycle through instances of the Bag in external methods (like main)..
-	class BagIterator implements Iterator<T>{
+	private class BagIterator implements Iterator<T>{
 		Bag<T>.Node current = first; // Nested class allows access to Bag's members
 		
 		// If 'current' is null, then the iteration is complete
