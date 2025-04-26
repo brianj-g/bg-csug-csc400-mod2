@@ -234,7 +234,7 @@ class BagMain {
         System.out.println();
         Bag<String> newBag = firstBag.distinct();
         System.out.println("Size of new bag: " + newBag.size());
-        System.out.println("Printing the contents of newBag containing distinct items");
+        System.out.println("Printing the contents of newBag containing distinct items...");
         for (String item : newBag) {
             System.out.println(item);
         }
