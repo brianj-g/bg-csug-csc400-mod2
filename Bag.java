@@ -194,50 +194,43 @@ class BagMain {
 	
 	// Main function
 	public static void main(String args[]) {
-		// Create an instance of Bag
-		Bag<String> myBag = new Bag<String>();
+		// Create two instance of Bag
+		Bag<String> firstBag = new Bag<String>();
+		Bag<String> secondBag = new Bag<String>();
 		
-		// For ease of testing, an array is used to populate words into the Bag
-		String[] wordList = {"this", "is", "a", "test", "a", "is", "this", "is"};
-		
-		// Iterate through the array and use the "add()" function to add items to the Bag
-		for (String word : wordList) {
-			myBag.add(word);
-		}
-		
-		// Print out the initial contents of the Bag
+	      // For ease of testing, two arrays are used to populate words into the Bag
+        String[] fruitList = {"orange", "apple", "apple", "banana", "pear", "banana", "banana", "kiwi", "orange"};
+        String[] vegetableList = {"lettuce", "celery", "lettuce", "spinach", "carrot", "celery", "spinach", "lettuce", "carrot"};
+        
+        // Iterate through the arrays and use the "add()" function to add items to each respective Bag
+        for (String string : fruitList) {
+            firstBag.add(string);
+        }
+        
+        for (String string : vegetableList) {
+            secondBag.add(string);
+        }
+        
+        // Print out the size of each bag
+        System.out.println("Printing bag sizes...");
+        System.out.println("Fruit Bag size: " + firstBag.size());
+        System.out.println("Vegetable Bag size: " + secondBag.size());
 		System.out.println();
-		System.out.println("Printing the initial Bag...");
-		printBag(myBag);
-		System.out.println();
-		
-		// Test the Bag "contains()" method
-		System.out.println("Testing the 'contains()' method...");
-		containsTest("test", myBag);
-		containsTest("a", myBag);
-		containsTest("not", myBag);
-		containsTest("the", myBag);
-		System.out.println();
-		
-		// Test Bag's "count()" method
-		System.out.println("Testing the 'count()' method...");
-		countTest("this", myBag);
-		countTest("is", myBag);
-		countTest("a", myBag);
-		countTest("test", myBag);
-		System.out.println();
-		
-		// Remove an item
-		System.out.println("Removing one occurrence of the word 'test' from the Bag...");
-		myBag.remove("test");
-		System.out.println("New Bag contents:");
-		printBag(myBag);
-		System.out.println();
-		
-		// Check the contains() and count() methods again
-		System.out.println("Testing the successful removal...");
-		containsTest("test", myBag);
-		countTest("test", myBag);
-
+        
+		// Merge the two bags and print the contents
+        firstBag.merge(secondBag);
+        System.out.println("Printing contents of firstBag containing merged items...");
+        for (String item : firstBag) {
+            System.out.println(item);
+        }
+        System.out.println();
+        
+        // Create new bag with unique items and print the items
+        Bag<String> newBag = firstBag.distinct();
+        System.out.println("Size of new bag: " + newBag.size());
+        System.out.println("Printing the contents of newBag containing distinct items");
+        for (String item : newBag) {
+            System.out.println(item);
+        }
 	}
 }
