@@ -200,7 +200,7 @@ class BagMain {
 		
 	      // For ease of testing, two arrays are used to populate words into the Bag
         String[] fruitList = {"orange", "apple", "apple", "banana", "pear", "banana", "banana", "kiwi", "orange"};
-        String[] vegetableList = {"lettuce", "celery", "lettuce", "spinach", "carrot", "celery", "spinach", "lettuce", "carrot"};
+        String[] vegetableList = {"lettuce", "celery", "lettuce", "spinach", "carrot", "celery", "spinach", "lettuce", "carrot", "pepper"};
         
         // Iterate through the arrays and use the "add()" function to add items to each respective Bag
         for (String string : fruitList) {
@@ -212,13 +212,17 @@ class BagMain {
         }
         
         // Print out the size of each bag
+        System.out.println();
         System.out.println("Printing bag sizes...");
-        System.out.println("Fruit Bag size: " + firstBag.size());
-        System.out.println("Vegetable Bag size: " + secondBag.size());
+        System.out.println("firstBag size: " + firstBag.size());
+        System.out.println("secondBag size: " + secondBag.size());
 		System.out.println();
         
 		// Merge the two bags and print the contents
+		System.out.println("Merging bags 1 and 2...");
+		System.out.println();
         firstBag.merge(secondBag);
+        System.out.println("Size of merged bag: " + firstBag.size());
         System.out.println("Printing contents of firstBag containing merged items...");
         for (String item : firstBag) {
             System.out.println(item);
