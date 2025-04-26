@@ -118,10 +118,21 @@ public class Bag<T> implements Iterable<T> {
 	    // Create an item of T to store transient Bag items
 	    T item;
 	    
+	    Iterator<T> currentIterator = this.iterator();
+	    
 	    // Iterate current bag and place an item in the new bag if it doesn't already contain that item
-	    while(hasNext()) {
+	    while(currentIterator.hasNext()) {
+	        // Place next value into a temporary item
+	        item = currentIterator.next();
 	        
+	        // Use the current bag's 'contains()' method to check existence and add the item to the new bag
+	        if(!newBag.contains(item)) {
+	            newBag.add(item);
+	        }
 	    }
+	    
+	    // return the new Bag
+	    return newBag;
 	}
 	
 	//-----------------------------------
