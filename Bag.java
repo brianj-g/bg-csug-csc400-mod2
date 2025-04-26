@@ -230,6 +230,8 @@ class BagMain {
         System.out.println();
         
         // Create new bag with unique items and print the items
+        System.out.println("Creating a new bag with only distinct items from bags 1 and 2...");
+        System.out.println();
         Bag<String> newBag = firstBag.distinct();
         System.out.println("Size of new bag: " + newBag.size());
         System.out.println("Printing the contents of newBag containing distinct items");
