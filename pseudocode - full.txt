@@ -87,19 +87,19 @@ Class Bag (type T)
    
    ### Additional methods to extend the Bag class
 
-###
-// Return the total number of elements including duplicates (i.e., the number of nodes counted by the 'num' variable)
-function size() : int
-    return num
-end function
-
-###
-// Merge two Bag objects by placing the elements of 'otherBag' into the list after the elements of the current bag
-function merge(otherBag : Bag<T> : void
-    // Iterate using the otherBag's hasNext() and next() methods and use the add() method of the current bag to add each element
-    while otherBag.hasNext()
-        add otherBag.next()
-end function
+	###
+	// Return the total number of elements including duplicates (i.e., the number of nodes counted by the 'num' variable)
+	function size() : int
+	    return num
+	end function
+	
+	###
+	// Merge two Bag objects by placing the elements of 'otherBag' into the list after the elements of the current bag
+	function merge(otherBag : Bag<T> : void
+	    // Iterate using the otherBag's hasNext() and next() methods and use the add() method of the current bag to add each element
+	    while otherBag.hasNext()
+	        add otherBag.next()
+	end function
 	
 	###
 	// Return a new bag that contains only unique elements
@@ -111,8 +111,8 @@ end function
 	    
 	    // Iterate current bag and place an item in the new bag if it doesn't already contain that item
 	    while this.hasNext()
-	        // 
-	        set T item = this.next()
+	        // Place next value into the temp item
+	        set item = this.next()
 	        // Use the Bag's 'contains()' method to check if item exists in the new bag already, add if not
 	        if not newBag.contains(item)
 	            newBag.add(item)
@@ -162,61 +162,37 @@ end function
 end class
 
 Class BagMain
-   #####
-   function printBag(bag : Bag)
-      for each item in bag
-         print item
-   end function
-   
-   #####
-   function containsTest(myString : String, myBag : Bag)
-      if myBag.contains(myString)
-         print "Bag contains {myString}"
-      else
-   	     print "Bag does not contain {myString}"
-   end function
-   
-   #####
-   function countTest(myString : String, myBag : Bag)
-      print "Bag contains {myBag.count(myString)} occurrences of '{myString}'"
-   end function
-       
    ##### 
    function main
-	   // Create instance of the bag class
-	   create Bag myBag : String
-	   
-	   // For convenience, create an array with an assortment of strings to add to the bag
-	   create Array wordList : String = {"this", "is", "a", "test", "a", "is", "this", "is"}
-	   
-	   // Add all words to the bag
-	   for each word in wordList
-	      myBag.add(word)
-	 
-	   // Print the bag contents
-	   printBag(myBag)
-	   
-	   // Test "contains" method
-	   containsTest("test", myBag)
-	   containsTest("a", myBag)
-	   containsTest("not", myBag)
-	   containsTest("and", myBag)
-	   
-	   // Test count method
-	   countTest("this", myBag)
-	   countTest("is", myBag)
-	   
-	   // Remove item
-	   myBag.remove("is")
-	   
-	   // Print the bag
-	   printBag(myBag)
-	   
-	   // Test contains method
-	   containsTest("is", myBag)
-	   
-	   // Test count method
-	   countTest("is", myBag)
+		// Create two instance of Bag
+		create Bag<String> firstBag
+		create Bag<String> secondBag
+		
+	   // For ease of testing, two arrays are used to populate words into the Bag
+      create Array fruitList = {"orange", "apple", "apple", "banana", "pear", "banana", "banana", "kiwi", "orange"};
+      create array vegetableList = {"lettuce", "celery", "lettuce", "spinach", "carrot", "celery", "spinach", "lettuce", "carrot", "pepper"};
+        
+      // Iterate through the arrays and use the "add()" function to add items to each respective Bag
+      for each string in fruitList)
+          firstBag.add(string)
+          
+      for each string in vegetableList
+          secondBag.add(string)
+        
+      // Print out the size of each bag
+      print "First bag: {firstBag.size()}"
+      print "Sedcond bag: {secondBag.size()}"
+        
+		// Merge the two bags and print the contents
+      firstBag.merge(secondBag)
+      for item in firstBag) {
+      	print item
+        
+      // Create new bag with unique items and print the items
+      
+      create Bag<String> newBag = firstBag.distinct()
+      for each item in newBag
+         print item
    end function
    
    
