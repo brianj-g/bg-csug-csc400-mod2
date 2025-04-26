@@ -25,7 +25,7 @@ public class Bag<T> implements Iterable<T> {
 	
 	// Method: Remove a node from the linked list
 	public void remove(T item) {
-		// Ensure bage is not empty
+		// Ensure bag is not empty
 		if (first == null) return;
 		
 		// Check to see if item is the first node and remove it from the list if so
@@ -89,9 +89,9 @@ public class Bag<T> implements Iterable<T> {
 	}
 	
 	/* Additional methods to extend the Bag class (Module 2)
-	 * int size()`: This method should return the total number of elements in the bag, including duplicates.
-	 * void merge(Bag<T> otherBag)`: This method should merge the elements of `otherBag` into the current bag.
-	 * Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
+	 * int size(): This method should return the total number of elements in the bag, including duplicates.
+	 * void merge(Bag<T> otherBag): This method should merge the elements of `otherBag` into the current bag.
+	 * Bag<T> distinct(): This method should return a new bag that contains only the distinct elements from the current bag.
 	 */
 	
 	// Return the total number of elements including duplicates (i.e., the number of nodes counted by the 'num' variable)
