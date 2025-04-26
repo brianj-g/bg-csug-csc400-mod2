@@ -220,9 +220,9 @@ class BagMain {
         
 		// Merge the two bags and print the contents
 		System.out.println("Merging bags 1 and 2...");
-		System.out.println();
         firstBag.merge(secondBag);
         System.out.println("Size of merged bag: " + firstBag.size());
+        System.out.println();
         System.out.println("Printing contents of firstBag containing merged items...");
         for (String item : firstBag) {
             System.out.println(item);
@@ -231,9 +231,9 @@ class BagMain {
         
         // Create new bag with unique items and print the items
         System.out.println("Creating a new bag with only distinct items from bags 1 and 2...");
-        System.out.println();
         Bag<String> newBag = firstBag.distinct();
         System.out.println("Size of new bag: " + newBag.size());
+        System.out.println();
         System.out.println("Printing the contents of newBag containing distinct items...");
         for (String item : newBag) {
             System.out.println(item);
